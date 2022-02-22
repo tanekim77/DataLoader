@@ -1,0 +1,119 @@
+﻿<Window x:Class="DataLoader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataLoader"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem>
+                <TabItem.Header>
+                    Process All
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <DockPanel  Grid.Row="0"  >
+                        <Label HorizontalAlignment="Center" Content="Max File Size (bytes):" FontSize="12"  />
+                        <TextBox x:Name="InputSplit_All" Height="20" TextWrapping="Wrap" />
+                    </DockPanel>
+                    <Label HorizontalAlignment="Left" Content="texts to Replace (from => To) separated by comma:" FontSize="12"  Grid.Row="1"/>
+                    <TextBox x:Name="InputReplace_All" Height="40" TextWrapping="Wrap"  Grid.Row="2"/>
+                    <Label 
+                        x:Name="FilesAndFoldersLabel_All"
+                        HorizontalAlignment="Center" Content="" Grid.Row="3" FontSize="16"/>
+                    <StackPanel
+                         Tag="All"
+                        x:Name="FilesFolders_All"
+                       
+                        AllowDrop="True" Background="LightGray" Margin="40,0,40,0" 
+                        Drop="DropFilesFolders"
+                         Grid.Row="4" 
+                        >
+                        <Label Content="Drop Files/Folders" HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Button 
+                         Tag="All"
+                        x:Name="Process_All" Click="Process_Click" Grid.Row="5">Start</Button>
+                    <Label x:Name="Status_All" Content="" FontSize="10" Grid.Row="6"/>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    Replace illegal Chars
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <Label 
+                        HorizontalAlignment="Left" Content="texts to Replace (from => To) separated by comma:" Grid.Row="0" FontSize="12"/>
+                    <TextBox x:Name="InputReplace_Replace" Height="40" TextWrapping="Wrap" Grid.Row="1" >
+                    </TextBox>
+                    <Label 
+                        x:Name="FilesAndFoldersLabel_Replace"
+                        HorizontalAlignment="Center" Content="" Grid.Row="2" FontSize="16"/>
+                    <StackPanel
+                         Tag="Replace"
+                        x:Name="FilesFolders_Replace"
+                        Grid.Row="3" 
+                        AllowDrop="True" Background="LightGray" Margin="40,0,40,0" 
+                        Drop="DropFilesFolders"
+                        >
+                        <Label Content="Drop Files/Folders" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <Button  Tag="Replace" x:Name="Process_Replace" Click="Process_Click" Grid.Row="4">Start</Button>
+                    <Label x:Name="Status_Replace" Content="" Grid.Row="5" FontSize="12"/>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    Split Files
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <DockPanel  Grid.Row="0">
+                        <Label HorizontalAlignment="Center" Content="Max File Size (bytes):" FontSize="12"  />
+                        <TextBox x:Name="InputSplit_Split" Height="20" TextWrapping="Wrap" />
+                    </DockPanel>
+                    <Label 
+                        x:Name="FilesAndFoldersLabel_Split"
+                        HorizontalAlignment="Center" Content="" Grid.Row="1" FontSize="16"/>
+                    <StackPanel
+                         Tag="Split"
+                        x:Name="FilesFolders_Split"
+                        AllowDrop="True" Background="LightGray" Margin="40,0,40,0" 
+                        Drop="DropFilesFolders"
+                        Grid.Row="2" 
+                        >
+                        <Label Content="Drop Files/Folders" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <Button Tag="Split" x:Name="Process_Split" Click="Process_Click" Grid.Row="3">Start</Button>
+                    <Label x:Name="Status_Split" Content="" Grid.Row="4" FontSize="12"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
